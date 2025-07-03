@@ -2,21 +2,24 @@
 public class FirstLetterToAppearTwice {
 
     public static char repeatedCharacter(String s) {
-        int len = s.length();
-        char repeatedChar = 'a';
+        boolean[] seen = new boolean[26];
+
         int i = 0;
-        while (i < len - 1) {
-            if (s.charAt(i) == s.charAt(i + 1)) {
-                repeatedChar = s.charAt(i);
-                break;
+        
+        for(char c: s.toCharArray()){
+            int index = c - 'a';
+            if(seen[index]){
+                return c;
             }
-            i++;
+            seen[index] = true;
         }
 
-        return repeatedChar;
+        return ' ';
     }
 
     public static void main(String[] args) {
         System.out.println(repeatedCharacter("abcdd"));
     }
 }
+
+
